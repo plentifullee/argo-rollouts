@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: rollouts-demo
+  name: rollouts-canary-demo
 spec:
   replicas: 5
   strategy:
@@ -18,14 +18,14 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: rollouts-demo
+      app: rollouts-canary-demo
   template:
     metadata:
       labels:
-        app: rollouts-demo
+        app: rollouts-canary-demo
     spec:
       containers:
-      - name: rollouts-demo
+      - name: rollouts-canary-demo
         image: plentiful/rollouts-demo:red
         ports:
         - name: http
