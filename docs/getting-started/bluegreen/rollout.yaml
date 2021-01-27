@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: plentiful/rollouts-demo:yellow
+        image: plentiful/rollouts-demo:red
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
