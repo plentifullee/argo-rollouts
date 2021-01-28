@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: rollouts-alb-demo
+  name: rollouts-demo
 spec:
   replicas: 1
   strategy:
     canary:
-      canaryService: rollouts-alb-demo-canary
-      stableService: rollouts-alb-demo-stable
+      canaryService: rollouts-demo-canary
+      stableService: rollouts-demo-stable
       trafficRouting:
         alb:
-          ingress: rollouts-alb-demo-ingress
+          ingress: rollouts-demo-ingress
           servicePort: 80
       steps:
       - setWeight: 5
@@ -18,18 +18,18 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: rollouts-alb-demo
+      app: rollouts-demo
   template:
     metadata:
       labels:
-        app: rollouts-alb-demo
+        app: rollouts-demo
     spec:
       containers:
-      - name: rollouts-alb-demo
-        image: plentiful/rollouts-demo:yellow
+      - name: rollouts-demo
+        image: plentiful/rollouts-demo:blue
         ports:
         - name: http
-          containerPort: 80
+          containerPort: 8080
           protocol: TCP
         resources:
           requests:

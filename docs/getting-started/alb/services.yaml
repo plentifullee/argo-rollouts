@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rollouts-alb-demo-canary
+  name: rollouts-demo-canary
 spec:
   type: NodePort
   ports:
@@ -10,7 +10,7 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: rollouts-alb-demo
+    app: rollouts-demo
     # This selector will be updated with the pod-template-hash of the canary ReplicaSet. e.g.:
     # rollouts-pod-template-hash: 7bf84f9696
 
@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rollouts-alb-demo-stable
+  name: rollouts-demo-stable
 spec:
   type: NodePort
   ports:
@@ -27,6 +27,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: rollouts-alb-demo
+    app: rollouts-demo
     # This selector will be updated with the pod-template-hash of the stable ReplicaSet. e.g.:
     # rollouts-pod-template-hash: 789746c88d
