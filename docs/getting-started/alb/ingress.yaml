@@ -30,4 +30,4 @@ spec:
           - path: /*
             backend:
               serviceName: rollouts-demo-stable
-              servicePort: use-annotation
+              servicePort: 80
